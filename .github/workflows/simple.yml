@@ -10,7 +10,7 @@ jobs:
         run: echo 'Hello World baby'
       - name: multiline script
         run: |
-          node -version
+          node -v
           npm -version
 
   
