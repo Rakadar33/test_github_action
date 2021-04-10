@@ -11,6 +11,18 @@ on:
   
   # Manual trigger
   # help on https://developer.github.com/v3/repos/#create-a-repository-dispatch-event
+  # With a POST curl command, after creation of Tooken :
+  #    curl \
+  #  -X POST \
+  #  -H "Accept: application/vnd.github.v3+json" \
+  #  -H "Authorization: token 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" \
+  #  https://api.github.com/repos/Rakadar33/test_github_action/dispatches \
+  #  -d '{\
+  #  "event_type":"build_123"\
+  #  "client_payload": {"env" : "production}\
+  #  }'
+
+  
   repository_dispatch:
     types: [build_123]
 
@@ -22,6 +34,8 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
+      - name: get payload from curl
+        run: echo "${{github.token}}"
       - name: list files
         run: |
           pwd
