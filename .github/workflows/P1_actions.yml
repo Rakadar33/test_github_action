@@ -1,0 +1,38 @@
+name: Actions Workflow
+
+on: [push]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list files
+        run: |
+          pwd
+          # ls will not print anything because our repo is not cloned 
+          # to clone, we will have to use actions/checkout
+          ls
+
+          # Our commit Id SHA1 : 
+          echo $GITHUB_SHA 
+          # Our repo name :
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{github.token}}"
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: list files after checkout
+        run: |
+          pwd
+          # now with ls, we can observe our files from our repo
+          ls -a
+      - name: simple JS actions
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with: 
+            who-to-greet: Marcel
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time}}"
+        
