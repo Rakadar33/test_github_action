@@ -2,9 +2,18 @@ name: Actions Workflow_2
 
 on:
   #push:
-  schedule:
-    - cron: "0/5 * * * *"
-    - cron: "0/6 * * * *"    
+
+  # exemple of schedule : every 5 & 6 minutes
+  # cron help on https://crontab.guru/
+  #schedule:
+  #  - cron: "0/5 * * * *"
+  #  - cron: "0/6 * * * *"    
+  
+  # Manual trigger
+  # help on https://developer.github.com/v3/repos/#create-a-repository-dispatch-event
+  repository_dispatch:
+    types: [build_123]
+
   pull_request:
     types: [closed, assigned, opened, reopened]
   issues:
