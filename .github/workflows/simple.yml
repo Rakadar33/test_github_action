@@ -18,7 +18,6 @@ jobs:
           print(platform.processor())
         shell: python
 
-jobs:
   run-windows-command:
     runs-on: windows-latest
     steps:
