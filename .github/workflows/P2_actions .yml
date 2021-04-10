@@ -15,7 +15,7 @@ on:
   #    curl \
   #  -X POST \
   #  -H "Accept: application/vnd.github.v3+json" \
-  #  -H "Authorization: token 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" \
+  #  -H "Authorization: token XXX" \
   #  https://api.github.com/repos/Rakadar33/test_github_action/dispatches \
   #  -d '{\
   #  "event_type":"build_123"\
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get payload from curl
-        run: echo "${{github.token}}"
+        run: echo "${{github.event.client_payload.env}}"
       - name: list files
         run: |
           pwd
