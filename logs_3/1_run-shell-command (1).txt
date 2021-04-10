@@ -1,0 +1,46 @@
+2021-04-09T23:38:10.2682147Z ##[section]Starting: Request a runner to run this job
+2021-04-09T23:38:10.4610225Z Can't find any online and idle self-hosted runner in current repository that matches the required labels: 'ubuntu-latest'
+2021-04-09T23:38:10.4610321Z Can't find any online and idle self-hosted runner in current repository's account/organization that matches the required labels: 'ubuntu-latest'
+2021-04-09T23:38:10.4610695Z Found online and idle hosted runner in current repository's account/organization that matches the required labels: 'ubuntu-latest'
+2021-04-09T23:38:10.6286056Z ##[section]Finishing: Request a runner to run this job
+2021-04-09T23:38:16.1405554Z Current runner version: '2.277.1'
+2021-04-09T23:38:16.1434719Z ##[group]Operating System
+2021-04-09T23:38:16.1435709Z Ubuntu
+2021-04-09T23:38:16.1436267Z 20.04.2
+2021-04-09T23:38:16.1436707Z LTS
+2021-04-09T23:38:16.1437242Z ##[endgroup]
+2021-04-09T23:38:16.1437825Z ##[group]Virtual Environment
+2021-04-09T23:38:16.1438576Z Environment: ubuntu-20.04
+2021-04-09T23:38:16.1439173Z Version: 20210405.1
+2021-04-09T23:38:16.1440308Z Included Software: https://github.com/actions/virtual-environments/blob/ubuntu20/20210405.1/images/linux/Ubuntu2004-README.md
+2021-04-09T23:38:16.1441793Z Image Release: https://github.com/actions/virtual-environments/releases/tag/ubuntu20%2F20210405.1
+2021-04-09T23:38:16.1442786Z ##[endgroup]
+2021-04-09T23:38:16.1445044Z ##[group]GITHUB_TOKEN Permissions
+2021-04-09T23:38:16.1446372Z Actions: write
+2021-04-09T23:38:16.1446901Z Checks: write
+2021-04-09T23:38:16.1447476Z Contents: write
+2021-04-09T23:38:16.1448037Z Deployments: write
+2021-04-09T23:38:16.1449006Z Issues: write
+2021-04-09T23:38:16.1449598Z Metadata: read
+2021-04-09T23:38:16.1450294Z OrganizationPackages: write
+2021-04-09T23:38:16.1450948Z Packages: write
+2021-04-09T23:38:16.1451604Z PullRequests: write
+2021-04-09T23:38:16.1452270Z RepositoryProjects: write
+2021-04-09T23:38:16.1453013Z SecurityEvents: write
+2021-04-09T23:38:16.1453596Z Statuses: write
+2021-04-09T23:38:16.1454224Z ##[endgroup]
+2021-04-09T23:38:16.1457525Z Prepare workflow directory
+2021-04-09T23:38:16.2183044Z Prepare all required actions
+2021-04-09T23:38:16.3041948Z ##[group]Run echo 'Hello World baby'
+2021-04-09T23:38:16.3042658Z [36;1mecho 'Hello World baby'[0m
+2021-04-09T23:38:16.3776533Z shell: /usr/bin/bash -e {0}
+2021-04-09T23:38:16.3777604Z ##[endgroup]
+2021-04-09T23:38:17.0484130Z Hello World baby
+2021-04-09T23:38:17.0547582Z ##[group]Run node -v
+2021-04-09T23:38:17.0548244Z [36;1mnode -v[0m
+2021-04-09T23:38:17.0548802Z [36;1mnpm -version[0m
+2021-04-09T23:38:17.0593386Z shell: /usr/bin/bash -e {0}
+2021-04-09T23:38:17.0594027Z ##[endgroup]
+2021-04-09T23:38:17.4973499Z v14.16.0
+2021-04-09T23:38:17.5114503Z 6.14.11
+2021-04-09T23:38:17.5130403Z Cleaning up orphan processes

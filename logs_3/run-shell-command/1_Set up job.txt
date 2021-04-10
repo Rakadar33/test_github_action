@@ -1,0 +1,28 @@
+2021-04-09T23:38:16.1404947Z Current runner version: '2.277.1'
+2021-04-09T23:38:16.1434678Z ##[group]Operating System
+2021-04-09T23:38:16.1435696Z Ubuntu
+2021-04-09T23:38:16.1436260Z 20.04.2
+2021-04-09T23:38:16.1436699Z LTS
+2021-04-09T23:38:16.1437233Z ##[endgroup]
+2021-04-09T23:38:16.1437817Z ##[group]Virtual Environment
+2021-04-09T23:38:16.1438568Z Environment: ubuntu-20.04
+2021-04-09T23:38:16.1439165Z Version: 20210405.1
+2021-04-09T23:38:16.1440299Z Included Software: https://github.com/actions/virtual-environments/blob/ubuntu20/20210405.1/images/linux/Ubuntu2004-README.md
+2021-04-09T23:38:16.1441784Z Image Release: https://github.com/actions/virtual-environments/releases/tag/ubuntu20%2F20210405.1
+2021-04-09T23:38:16.1442778Z ##[endgroup]
+2021-04-09T23:38:16.1445031Z ##[group]GITHUB_TOKEN Permissions
+2021-04-09T23:38:16.1446355Z Actions: write
+2021-04-09T23:38:16.1446894Z Checks: write
+2021-04-09T23:38:16.1447468Z Contents: write
+2021-04-09T23:38:16.1448031Z Deployments: write
+2021-04-09T23:38:16.1448910Z Issues: write
+2021-04-09T23:38:16.1449590Z Metadata: read
+2021-04-09T23:38:16.1450287Z OrganizationPackages: write
+2021-04-09T23:38:16.1450941Z Packages: write
+2021-04-09T23:38:16.1451597Z PullRequests: write
+2021-04-09T23:38:16.1452263Z RepositoryProjects: write
+2021-04-09T23:38:16.1453007Z SecurityEvents: write
+2021-04-09T23:38:16.1453589Z Statuses: write
+2021-04-09T23:38:16.1454214Z ##[endgroup]
+2021-04-09T23:38:16.1457495Z Prepare workflow directory
+2021-04-09T23:38:16.2182977Z Prepare all required actions
