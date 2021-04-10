@@ -12,6 +12,12 @@ jobs:
           # ls will not print anything because our repo is not cloned 
           # to clone, we will have to use actions/checkout
           ls
+          echo $GITHUB_SHA 
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{github.token}}"
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
       - name: checkout
         uses: actions/checkout@v1
       - name: list files after checkout
