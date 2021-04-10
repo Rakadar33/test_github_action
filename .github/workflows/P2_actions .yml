@@ -28,6 +28,7 @@ jobs:
           pwd
           # now with ls, we can observe our files from our repo
           ls -a
+          echo just an echo to create a pull request
       - name: simple JS actions
         id: greet
         uses: actions/hello-world-javascript-action@v1
