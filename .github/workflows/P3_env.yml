@@ -4,7 +4,6 @@ on: push
 env:
   WORKFLOW_ENV: Available to all Jobs
 
-
 jobs:
   log-env:
     runs-on: ubuntu-latest
@@ -15,15 +14,15 @@ jobs:
         env:
           STEP_ENV: Available only in this step named log Env variables
         run: |
-          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
-          echo "JOB_ENV : ${{ JOB_ENV }}"
-          echo "STEP_ENV : ${{ STEP_ENV }}"
+          echo "WORKFLOW_ENV : ${ WORKFLOW_ENV }"
+          echo "JOB_ENV : ${ JOB_ENV }"
+          echo "STEP_ENV : ${ STEP_ENV }"
       - name: log Env variables 2
         run: |
-          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
-          echo "JOB_ENV : ${{ JOB_ENV }}"
+          echo "WORKFLOW_ENV : ${ WORKFLOW_ENV }"
+          echo "JOB_ENV : ${ JOB_ENV }"
           # this will not work because STEP_ENV is not in step namespace
-          echo "STEP_ENV : ${{ STEP_ENV }}"
+          echo "STEP_ENV : ${ STEP_ENV }"
 
   log-default-env:
     runs-on: ubuntu-latest
@@ -40,9 +39,9 @@ jobs:
           echo "GITHUB_WORKSPACE: {GITHUB_WORKSPACE}"
           echo "GITHUB_SHA: {GITHUB_SHA}"
           echo "GITHUB_REF: {GITHUB_REF}"
-          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
-          echo "JOB_ENV : ${{ JOB_ENV }}"
-          echo "STEP_ENV : ${{ STEP_ENV }}"
+          echo "WORKFLOW_ENV : ${ WORKFLOW_ENV }"
+          echo "JOB_ENV : ${ JOB_ENV }"
+          echo "STEP_ENV : ${ STEP_ENV }"
           echo "--------------------------"
           echo "GITHUB_RUN_ID: {GITHUB_RUN_ID}"
           echo "GITHUB_RUN_NUMBER: {GITHUB_RUN_NUMBER}"
