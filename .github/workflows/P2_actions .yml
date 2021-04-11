@@ -1,7 +1,25 @@
 name: Actions Workflow_2
 
 on:
-  #push:
+  push:
+    #branches-ignore, can't be used with branches
+    branches:
+      # will be launched only if pushed on branch master
+      # or branch feature/f1, feature/f2, feature/toto etc...
+      # but does not work for /feature/toto/another_dir. To do so, you must use double * : 'feature/**'
+      - master
+      - 'feature/*'
+      # ignore feature t5 (thanx to "!" just before)
+      - '!feature/t5'
+
+    #tags-ignore, can't be used with tags
+    tags:
+    - v1.*
+    
+    # idem paths-exclude
+    paths:
+      - '**.py'
+      - '!toto.py' # ignore thx to "!"
 
   # exemple of schedule : every 5 & 6 minutes
   # cron help on https://crontab.guru/
@@ -20,9 +38,7 @@ on:
   #  -d '{\
   #  "event_type":"build_123"\
   #  "client_payload": {"env" : "production}\
-  #  }'
-
-  
+  #  }'  
   repository_dispatch:
     types: [build_123]
 
@@ -35,7 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get payload from curl
-        run: echo "${{github.event.client_payload.env}}"
+        run: echo "${{ github.event.client_payload.env }}"
       - name: list files
         run: |
           pwd

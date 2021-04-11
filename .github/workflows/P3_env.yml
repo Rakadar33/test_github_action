@@ -1,0 +1,56 @@
+name : Environment variables
+
+on: push
+env:
+  WORKFLOW_ENV: Available to all Jobs
+
+
+jobs:
+  log-env:
+    runs-on: ubuntu-latest
+    env:
+      JOB_ENV: Available to all steps in log-env job
+    steps:
+      - name: log Env variables
+        env:
+          STEP_ENV: Available only in this step named log Env variables
+        run: |
+          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
+          echo "JOB_ENV : ${{ JOB_ENV }}"
+          echo "STEP_ENV : ${{ STEP_ENV }}"
+    steps:
+      - name: log Env variables 2
+        run: |
+          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
+          echo "JOB_ENV : ${{ JOB_ENV }}"
+          # this will not work because STEP_ENV is not in step namespace
+          echo "STEP_ENV : ${{ STEP_ENV }}"
+
+  log-default-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Default ENV variables
+        run: |
+          echo "HOME: {HOME}"
+          echo "GITHUB_WORKFLOW: {GITHUB_WORKFLOW}"
+          echo "GITHUB_ACTION: {GITHUB_ACTION}"
+          echo "GITHUB_ACTIONS: {GITHUB_ACTIONS}"
+          echo "GITHUB_ACTOR: {GITHUB_ACTOR}"
+          echo "GITHUB_REPOSITORY: {GITHUB_REPOSITORY}"
+          echo "GITHUB_EVENT_NAME: {GITHUB_EVENT_NAME}"
+          echo "GITHUB_WORKSPACE: {GITHUB_WORKSPACE}"
+          echo "GITHUB_SHA: {GITHUB_SHA}"
+          echo "GITHUB_REF: {GITHUB_REF}"
+          echo "WORKFLOW_ENV : ${{ WORKFLOW_ENV }}"
+          echo "JOB_ENV : ${{ JOB_ENV }}"
+          echo "STEP_ENV : ${{ STEP_ENV }}"
+          echo "--------------------------"
+          echo "GITHUB_RUN_ID: {GITHUB_RUN_ID}"
+          echo "GITHUB_RUN_NUMBER: {GITHUB_RUN_NUMBER}"
+          echo "GITHUB_JOB: {GITHUB_JOB}"
+          echo "GITHUB_EVENT_PATH: {GITHUB_EVENT_PATH}"
+          echo "GITHUB_HEAD_REF: {GITHUB_HEAD_REF}"
+          echo "GITHUB_BASE_REF: {GITHUB_BASE_REF}"
+          echo "GITHUB_SERVER_URL: {GITHUB_SERVER_URL}"
+          echo "GITHUB_API_URL: {GITHUB_API_URL}"
+          echo "GITHUB_GRAPHQL_URL: {GITHUB_GRAPHQL_URL}"
