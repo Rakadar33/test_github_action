@@ -39,19 +39,16 @@ jobs:
     #    cmd /r dir perl.exe /s /b
 
     - name: Find notepad
-      run: |
-        Get-Command notepad
-        continue-on-error: true
+      run: Get-Command notepad
+      continue-on-error: true
 
     - name: Find Perl
-      run: |
-        Get-Command perl
-        continue-on-error: true
+      run:  Get-Command perl
+      continue-on-error: true
 
     - name: Find Go
-      run: |
-        Get-Command go
-        continue-on-error: true
+      run:  Get-Command go
+      continue-on-error: true
             
     - name: Change directory
       run: |
