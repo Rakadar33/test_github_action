@@ -32,6 +32,19 @@ jobs:
     - name: List all disks
       run: wmic logicaldisk get caption
 
+
+    - name: aaaa
+      run: |
+        C:
+        cd\
+        run: cmd /r dir perl.exe /s /b
+        D:
+        cd\
+        run: cmd /r dir perl.exe /s /b
+        A:
+        cd\
+        run: cmd /r dir perl.exe /s /b
+
     - name: Change directory
       run: |
         D:
