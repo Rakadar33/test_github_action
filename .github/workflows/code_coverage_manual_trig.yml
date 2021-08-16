@@ -29,6 +29,9 @@ jobs:
     - name: Install Golang
       run: choco install golang
 
+    - name: List all disks
+      run: wmic logicaldisk get caption
+
     - name: Change directory
       run: |
         c:
