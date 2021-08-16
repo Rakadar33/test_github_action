@@ -23,13 +23,13 @@ jobs:
       run: |
         c:
         cd\
-        dir /s gcov.exe
+        gci -r -filter gcov.exe | % fullname
 
     - name: Search Geninfo
-      run: dir /s geninfo.perl
+      run: gci -r -filter geninfo.perl | % fullname
 
     - name: Search Lcov
-      run: dir /s lcov.perl
+      run: gci -r -filter lcov.perl | % fullname    
 
     - name: Search Genhtml
-      run: dir /s genhtml
+      run: gci -r -filter genhtml.perl | % fullname
