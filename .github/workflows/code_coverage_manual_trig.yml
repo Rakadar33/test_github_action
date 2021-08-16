@@ -1,0 +1,35 @@
+name: code coverage
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cov:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Begin
+      run: echo Go!
+      
+    - name: Install Perl Strawberry
+      run: choco install strawberryperl
+
+    - name: Install Golang
+      run: choco install golang
+
+    - name: Search Gcov
+      run: |
+        c:
+        cd\
+        dir /s gcov.exe
+
+    - name: Search Geninfo
+      run: dir /s geninfo.perl
+
+    - name: Search Lcov
+      run: dir /s lcov.perl
+
+    - name: Search Genhtml
+      run: dir /s genhtml
