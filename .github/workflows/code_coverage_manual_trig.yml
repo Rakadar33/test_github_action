@@ -34,12 +34,12 @@ jobs:
 
     - name: Change directory
       run: |
-        c:
+        D:
         cd\
 
-    - name: cat log choc
-      run: cat C:\ProgramData\chocolatey\logs\chocolatey.log
-      continue-on-error: true
+    #- name: cat log choc
+    #  run: cat C:\ProgramData\chocolatey\logs\chocolatey.log
+    #  continue-on-error: true
 
     - name: Search go
       run: cmd /r dir go.exe /s /b
