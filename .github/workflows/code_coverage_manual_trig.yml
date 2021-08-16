@@ -29,16 +29,23 @@ jobs:
     - name: Install Golang
       run: choco install golang
 
-    - name: Search Gcov
+    - name: Change directory
       run: |
         c:
         cd\
 
+    - name: Search Gcov
+      run: cmd /r dir gcov.exe /s /b
+      continue-on-error: true
+
     - name: Search Geninfo
       run: cmd /r dir geninfo.perl /s /b
+      continue-on-error: true
 
     - name: Search Lcov
       run: cmd /r dir lcov.perl /s /b    
-
+      continue-on-error: true
+      
     - name: Search Genhtml
       run: genhtml
+      continue-on-error: true
