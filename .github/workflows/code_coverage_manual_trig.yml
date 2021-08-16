@@ -32,15 +32,20 @@ jobs:
     - name: List all disks
       run: wmic logicaldisk get caption
 
-
-    - name: aaaa
+    - name: C
       run: |
         C:
         cd\
         cmd /r dir perl.exe /s /b
+    
+    - name: D
+      run: |
         D:
         cd\
         cmd /r dir perl.exe /s /b
+    
+    - name: A
+      run: |
         A:
         cd\
         cmd /r dir perl.exe /s /b
