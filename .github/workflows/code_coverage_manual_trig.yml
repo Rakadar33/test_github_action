@@ -32,27 +32,30 @@ jobs:
     - name: List all disks
       run: wmic logicaldisk get caption
 
-    - name: C
-      run: |
-        C:
-        cd\
-        cmd /r dir perl.exe /s /b
-    
-    - name: D
-      run: |
-        D:
-        cd\
-        cmd /r dir perl.exe /s /b
-    
-    - name: A
-      run: |
-        A:
-        cd\
-        cmd /r dir perl.exe /s /b
+    #- name: C
+    #  run: |
+    #    C:
+    #    cd\
+    #    cmd /r dir perl.exe /s /b
 
+    - name: Find notepad
+      run: |
+        Get-Command notepad
+        continue-on-error: true
+
+    - name: Find Perl
+      run: |
+        Get-Command perl
+        continue-on-error: true
+
+    - name: Find Go
+      run: |
+        Get-Command go
+        continue-on-error: true
+            
     - name: Change directory
       run: |
-        D:
+        C:
         cd\
 
     #- name: cat log choc
