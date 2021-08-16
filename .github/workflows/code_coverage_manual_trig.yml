@@ -2,6 +2,11 @@ name: code coverage
 
 on:
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        description: 'Run the build with tmate debugging enabled (https://github.com/marketplace/actions/debugging-with-tmate)'     
+        required: false
+        default: false
 
 jobs:
   cov:
@@ -23,13 +28,12 @@ jobs:
       run: |
         c:
         cd\
-        gci -r -filter gcov.exe | % fullname
 
     - name: Search Geninfo
-      run: gci -r -filter geninfo.perl | % fullname
+      run: cmd /r dir geninfo.perl /s /b
 
     - name: Search Lcov
-      run: gci -r -filter lcov.perl | % fullname    
+      run: cmd /r dir lcov.perl /s /b    
 
     - name: Search Genhtml
-      run: gci -r -filter genhtml.perl | % fullname
+      run: genhtml
