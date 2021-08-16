@@ -37,13 +37,13 @@ jobs:
       run: |
         C:
         cd\
-        run: cmd /r dir perl.exe /s /b
+        cmd /r dir perl.exe /s /b
         D:
         cd\
-        run: cmd /r dir perl.exe /s /b
+        cmd /r dir perl.exe /s /b
         A:
         cd\
-        run: cmd /r dir perl.exe /s /b
+        cmd /r dir perl.exe /s /b
 
     - name: Change directory
       run: |
