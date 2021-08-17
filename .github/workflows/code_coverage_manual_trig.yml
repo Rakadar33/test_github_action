@@ -123,9 +123,11 @@ jobs:
     - name: Run PlatformIO Unit tests
       env:
         PLATFORMIO_LIB_EXTRA_DIRS: ${{ matrix.pio_lib_path }}
-        
       run: |
         cd Luos
+        $curDir = Get-Location
+        $env:PLATFORMIO_LIB_EXTRA_DIRS = Split-Path -Path $curDir -Parent
+        echo $env:PLATFORMIO_LIB_EXTRA_DIRS        
         pwd
         platformio run -t clean;platformio test -e native -v --filter "*mem*" 
       continue-on-error: true
