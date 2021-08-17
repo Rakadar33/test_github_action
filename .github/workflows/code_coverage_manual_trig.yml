@@ -120,7 +120,11 @@ jobs:
     - name: Run PlatformIO Unit tests
       env:
         PLATFORMIO_LIB_EXTRA_DIRS: ${{ matrix.pio_lib_path }}
-      run: platformio run -t clean;platformio test -e native -v --filter "*mem*" 
+        
+      run: |
+        cd Luos
+        pwd
+        platformio run -t clean;platformio test -e native -v --filter "*mem*" 
       continue-on-error: true
 
     - name: TU
