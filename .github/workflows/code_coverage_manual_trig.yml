@@ -145,6 +145,7 @@ jobs:
         echo $command_geninfo_3
         echo $command_lcov
         echo $command_genhtml
+        ls C:\ProgramData\Chocolatey\lib
         Invoke-Expression $command_gcov
         Invoke-Expression $command_geninfo_1
         Invoke-Expression $command_geninfo_2
