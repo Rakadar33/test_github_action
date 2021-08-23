@@ -96,18 +96,21 @@ jobs:
     #  with:
     #    name: test-results
 
-    - name: Install Windows dependencies
-      if: ${{ runner.os == 'Windows' }}
-      run: |
-        choco install strawberryperl
-        choco install golang
-        choco install lcov
+    # A REMETTRE
+    #- name: Install Windows dependencies
+    #  if: ${{ runner.os == 'Windows' }}
+    #  run: |
+    #    choco install strawberryperl
+    #    choco install golang
+    #    choco install lcov
 
     - name: Coverage generation
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
+        ls
         cd $WINDOWS_WORKSPACE
+        ls
         ls .\.pio\build\native\test\memory_allocator\        
         #mkdir .\test\CodeCoverage
         mkdir $WINDOWS_WORKSPACE\test\CodeCoverage
