@@ -63,8 +63,10 @@ jobs:
     - name: TU
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
-        # 
+        #
+        pwd
         cd Luos      
+        pwd
         ls .\.pio\build\native\test\memory_allocator\        
         mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
@@ -81,7 +83,10 @@ jobs:
         Invoke-Expression $command_geninfo_2
         Invoke-Expression $command_geninfo_3
         Invoke-Expression $command_lcov
+        echo 123
+        ls
         Invoke-Expression $command_genhtml
+        ls .\test\CodeCoverage
 
     - name: Publish artifact on Readme
       run: |
