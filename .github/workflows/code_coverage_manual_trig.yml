@@ -67,7 +67,9 @@ jobs:
         ls .\.pio\build\native\test\memory_allocator\        
         mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
-        $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
+
+        # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
+        $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcda .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcda .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcda"
         $command_geninfo_1= (Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\geninfo .\.pio\build\native\test\memory_allocator_static\ -o .\memory_allocator_static.info"
         $command_geninfo_2=(Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\geninfo .\.pio\build\native\test\memory_allocator\ -o .\memory_allocator.info"
         $command_geninfo_3=(Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\geninfo .\.pio\build\native\test\memory_allocator_tx\ -o .\memory_allocator_tx.info"
