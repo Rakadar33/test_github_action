@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cov:
+  build:
     runs-on: windows-latest
     strategy:
       matrix:
@@ -48,6 +48,12 @@ jobs:
         git clone https://github.com/Rakadar33/Luos.git
         cd Luos
         #git checkout mem_alloc_UT
+
+
+  testing:
+    name: Unit tests
+    needs: build
+    runs-on: windows-latest
     
     - name: Run PlatformIO Unit tests
       env:
@@ -87,12 +93,32 @@ jobs:
         Invoke-Expression $command_genhtml
         ls .\test\CodeCoverage
 
-    - name: Publish artifact on Readme
-      run: |
-        # TODO : Artifact + publish sur markdown readme
-        # 
-        ls
-
     - name: zip
-      run: |
-        Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip
+      run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
+
+   - name: Upload code coverage to GitHub
+      uses: actions/upload-artifact@v1
+      with:
+        name: code-coverage
+        path: D:\a\Luos\test\CodeCoverage\merged.info
+
+  coverage_report:
+    name: Generate coverage report
+    needs: testing
+    runs-on: windows-latest
+    steps:
+
+    - name: Download code coverage from GitHub
+      uses: actions/download-artifact@v1
+      with:
+        name: code-coverage
+        path: coverage
+
+    - name: Publish artifact on Readme
+      run: ls
+      #uses: zgosalvez/github-actions-report-lcov@49af65b0586c274a625a41a2dc8aaaae7d00568b
+      #with:
+      #  coverage-files: D:\a\Luos\test\CodeCoverage\merged.info
+      #  minimum-coverage: 3
+      #  artifact-name: code-coverage-report
+      #  github-token: ${{ secrets.GITHUB_TOKEN }}
