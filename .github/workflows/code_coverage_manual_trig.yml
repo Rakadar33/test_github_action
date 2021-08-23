@@ -47,7 +47,7 @@ jobs:
       run: |
         git clone https://github.com/Rakadar33/Luos.git
         cd Luos
-        git checkout mem_alloc_UT
+        #git checkout mem_alloc_UT
     
     - name: Run PlatformIO Unit tests
       env:
