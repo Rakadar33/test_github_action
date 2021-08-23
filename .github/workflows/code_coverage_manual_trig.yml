@@ -56,8 +56,8 @@ jobs:
         cd Luos
         $curDir = Get-Location
         $env:PLATFORMIO_LIB_EXTRA_DIRS = Split-Path -Path $curDir -Parent
-        # platformio run -t clean;platformio test -e native -v --filter "*mem*" 
-        platformio run -t clean;platformio test
+        # platformio run -t clean;platformio test -e native -v --filter "*mem*" -i CodeCoverage
+        platformio run -t clean;platformio test -i CodeCoverage
         ls .\.pio\build\native\test\memory_allocator\
 
     - name: TU
