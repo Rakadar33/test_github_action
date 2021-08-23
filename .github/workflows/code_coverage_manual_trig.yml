@@ -3,6 +3,11 @@ name: code coverage
 on:
   workflow_dispatch:
 
+env:
+  UBUNTU_WORKSPACE: "xxx"
+  MACOS_WORKSPACE: "xxx"  
+  WINDOWS_WORKSPACE: "D:\a\Luos"
+
 jobs:
   #------------------------------------------
   build_and_test:
@@ -13,7 +18,7 @@ jobs:
         os: [windows-latest]
         include:
         - os: windows-latest
-          pio_lib_path: D:\a\Luos
+          pio_lib_path: $WINDOWS_WORKSPACE
 
     steps:
     - uses: actions/checkout@v2
@@ -58,12 +63,12 @@ jobs:
     #- uses: actions/upload-artifact@v2
     #  with:
     #    name: test-results
-    #    path: D:\a\Luos
+    #    path: $WINDOWS_WORKSPACE\Luos
 
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: D:/a/Luos/*
+        path: $WINDOWS_WORKSPACE/*
         key: ${{ github.sha }}
           
   #------------------------------------------
@@ -83,7 +88,7 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: D:/a/Luos/*
+        path: $WINDOWS_WORKSPACE/*
         key: ${{ github.sha }}        
 
     #- uses: actions/download-artifact@v2
@@ -101,10 +106,10 @@ jobs:
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
-        cd D:/a/Luos/      
+        cd $WINDOWS_WORKSPACE
         ls .\.pio\build\native\test\memory_allocator\        
         #mkdir .\test\CodeCoverage
-        mkdir D:\a\Luos\test\CodeCoverage
+        mkdir $WINDOWS_WORKSPACE\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
 
         # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
@@ -114,7 +119,7 @@ jobs:
         $command_geninfo_3=(Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\geninfo .\.pio\build\native\test\memory_allocator_tx\ -o .\memory_allocator_tx.info"
         $command_lcov=     (Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\lcov --add-tracefile memory_allocator.info -a memory_allocator_static.info -a memory_allocator_tx.info -o merged.info"
         # -------- $command_genhtml=  (Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\genhtml merged.info -o .\test\CodeCoverage"
-        $command_genhtml=  (Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\genhtml merged.info -o D:\a\Luos\test\CodeCoverage\"
+        $command_genhtml=  (Get-Command perl.exe).Path + " $path\..\lib\lcov\tools\bin\genhtml merged.info -o $WINDOWS_WORKSPACE\test\CodeCoverage\"
         Invoke-Expression $command_gcov
         Invoke-Expression $command_geninfo_1
         Invoke-Expression $command_geninfo_2
@@ -131,7 +136,7 @@ jobs:
       run: ls
       #uses: zgosalvez/github-actions-report-lcov@49af65b0586c274a625a41a2dc8aaaae7d00568b
       #with:
-      #  coverage-files: D:\a\Luos\test\CodeCoverage\merged.info
+      #  coverage-files: $WINDOWS_WORKSPACE\test\CodeCoverage\merged.info
       #  minimum-coverage: 3
       #  artifact-name: code-coverage-report
       #  github-token: ${{ secrets.GITHUB_TOKEN }}
