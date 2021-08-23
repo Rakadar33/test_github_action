@@ -46,7 +46,7 @@ jobs:
       shell: bash
       run: |
         #git clone https://github.com/Luos-io/Luos.git
-        git clone https://github.com/Rakadar33/Lulu
+        git clone https://github.com/Rakadar33/Lulu.git
         cd Luos
         git checkout mem_alloc_UT
     
