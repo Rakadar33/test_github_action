@@ -32,13 +32,6 @@ jobs:
         pip install platformio
         npm install -g clang-format
       
-    - name: Install Windows dependencies
-      if: ${{ runner.os == 'Windows' }}
-      run: |
-        choco install strawberryperl
-        choco install golang
-        choco install lcov
-    
     - name: Check out Luos repository
       uses: actions/checkout@v2
 
@@ -69,7 +62,22 @@ jobs:
         platformio run -t clean;platformio test -i CodeCoverage
         ls .\.pio\build\native\test\memory_allocator\
 
-    - name: TU
+  coverage_report:
+    name: Generate coverage report
+    needs: testing
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Windows dependencies
+      if: ${{ runner.os == 'Windows' }}
+      run: |
+        choco install strawberryperl
+        choco install golang
+        choco install lcov
+
+    - name: Coverage generation
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
@@ -105,11 +113,11 @@ jobs:
         name: code-coverage
         path: D:\a\Luos\test\CodeCoverage\merged.info
 
-  coverage_report:
-    name: Generate coverage report
-    needs: testing
-    runs-on: windows-latest
 
+  Publish results:
+    name: Generate coverage report
+    needs: coverage_report
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
 
