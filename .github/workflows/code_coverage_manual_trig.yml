@@ -4,7 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
+  #------------------------------------------
   build_and_test:
+  #------------------------------------------
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -64,7 +66,9 @@ jobs:
         path: D:/a/Luos/*
         key: ${{ github.sha }}
           
+  #------------------------------------------
   coverage:
+  #------------------------------------------
     name: Code Coverage
     needs: build_and_test
 
@@ -97,7 +101,7 @@ jobs:
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
-        cd Luos      
+        cd D:/a/Luos/      
         ls .\.pio\build\native\test\memory_allocator\        
         #mkdir .\test\CodeCoverage
         mkdir D:\a\Luos\test\CodeCoverage
