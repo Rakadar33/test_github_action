@@ -108,6 +108,9 @@ jobs:
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
+        Get-Item -Path Env:*
+        ls
+        cd\
         ls
         cd $WINDOWS_WORKSPACE
         ls
