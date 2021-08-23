@@ -55,6 +55,9 @@ jobs:
     needs: build
     runs-on: windows-latest
     
+    steps:
+    - uses: actions/checkout@v2
+    
     - name: Run PlatformIO Unit tests
       env:
         PLATFORMIO_LIB_EXTRA_DIRS: ${{ matrix.pio_lib_path }}
@@ -96,7 +99,7 @@ jobs:
     - name: zip
       run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
 
-   - name: Upload code coverage to GitHub
+    - name: Upload code coverage to GitHub
       uses: actions/upload-artifact@v1
       with:
         name: code-coverage
@@ -106,7 +109,9 @@ jobs:
     name: Generate coverage report
     needs: testing
     runs-on: windows-latest
+
     steps:
+    - uses: actions/checkout@v2
 
     - name: Download code coverage from GitHub
       uses: actions/download-artifact@v1
