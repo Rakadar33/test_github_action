@@ -57,12 +57,14 @@ jobs:
         $curDir = Get-Location
         $env:PLATFORMIO_LIB_EXTRA_DIRS = Split-Path -Path $curDir -Parent
         platformio run -t clean;platformio test -e native -v --filter "*mem*" 
+        ls .\.pio\build\native\test\memory_allocator\
 
     - name: TU
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         # 
         cd Luos      
+        ls .\.pio\build\native\test\memory_allocator\        
         mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
         $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
