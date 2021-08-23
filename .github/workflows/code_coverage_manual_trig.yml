@@ -53,11 +53,17 @@ jobs:
         platformio run -t clean;platformio test -i CodeCoverage
         ls .\.pio\build\native\test\memory_allocator\
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: test-results
-        path: D:\a\Luos
+    #- uses: actions/upload-artifact@v2
+    #  with:
+    #    name: test-results
+    #    path: D:\a\Luos
 
+    - uses: actions/cache@v2
+      id: test-results
+      with:
+        path: D:/a/Luos/*
+        key: ${{ github.sha }}
+          
   coverage:
     name: Code Coverage
     needs: build_and_test
@@ -70,9 +76,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/download-artifact@v2
+    - uses: actions/cache@v2
+      id: test-results
       with:
-        name: test-results
+        path: D:/a/Luos/*
+        key: ${{ github.sha }}        
+
+    #- uses: actions/download-artifact@v2
+    #  with:
+    #    name: test-results
 
     - name: Install Windows dependencies
       if: ${{ runner.os == 'Windows' }}
