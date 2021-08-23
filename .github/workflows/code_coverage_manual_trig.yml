@@ -6,7 +6,7 @@ on:
 env:
   UBUNTU_WORKSPACE: "xxx"
   MACOS_WORKSPACE: "xxx"  
-  WINDOWS_WORKSPACE: "D:\a\Luos"
+  WINDOWS_WORKSPACE: "D:\\a\\Luos"
 
 jobs:
   #------------------------------------------
