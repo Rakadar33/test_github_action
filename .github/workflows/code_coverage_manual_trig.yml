@@ -62,8 +62,8 @@ jobs:
         platformio run -t clean;platformio test -i CodeCoverage
         ls .\.pio\build\native\test\memory_allocator\
 
-  coverage_report:
-    name: Generate coverage report
+  coverage:
+    name: Code Coverage
     needs: testing
     runs-on: windows-latest
 
@@ -113,10 +113,8 @@ jobs:
         name: code-coverage
         path: D:\a\Luos\test\CodeCoverage\merged.info
 
-
   Publish results:
-    name: Generate coverage report
-    needs: coverage_report
+    name: Publish results
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
