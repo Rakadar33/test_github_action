@@ -3,6 +3,10 @@ name: code coverage
 on:
   workflow_dispatch:
 
+defaults:
+  run:
+    working-directory: D:\a\Luos
+
 jobs:
   build:
     runs-on: windows-latest
@@ -42,15 +46,6 @@ jobs:
         cd Luos
         #git checkout mem_alloc_UT
 
-
-  testing:
-    name: Unit tests
-    needs: build
-    runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v2
-    
     - name: Run PlatformIO Unit tests
       env:
         PLATFORMIO_LIB_EXTRA_DIRS: ${{ matrix.pio_lib_path }}
@@ -64,8 +59,15 @@ jobs:
 
   coverage:
     name: Code Coverage
-    needs: testing
+    needs: build
     runs-on: windows-latest
+
+    strategy:
+      matrix:
+        os: [windows-latest]
+        include:
+        - os: windows-latest
+          pio_lib_path: D:\a\Luos
 
     steps:
     - uses: actions/checkout@v2
@@ -106,25 +108,6 @@ jobs:
 
     - name: zip
       run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
-
-    - name: Upload code coverage to GitHub
-      uses: actions/upload-artifact@v1
-      with:
-        name: code-coverage
-        path: D:\a\Luos\test\CodeCoverage\merged.info
-
-  Publish_results:
-    name: Publish results
-    needs: coverage
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Download code coverage from GitHub
-      uses: actions/download-artifact@v1
-      with:
-        name: code-coverage
-        path: coverage
 
     - name: Publish artifact on Readme
       run: ls
