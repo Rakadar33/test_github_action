@@ -3,13 +3,9 @@ name: code coverage
 on:
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: D:\a\Luos
-
 jobs:
-  build:
-    runs-on: windows-latest
+  build_and_test:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [windows-latest]
@@ -57,20 +53,26 @@ jobs:
         platformio run -t clean;platformio test -i CodeCoverage
         ls .\.pio\build\native\test\memory_allocator\
 
+    - uses: actions/upload-artifact@v2
+      with:
+        name: test-results
+        path: D:\a\Luos
+
   coverage:
     name: Code Coverage
-    needs: build
-    runs-on: windows-latest
+    needs: build_and_test
 
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [windows-latest]
-        include:
-        - os: windows-latest
-          pio_lib_path: D:\a\Luos
 
     steps:
     - uses: actions/checkout@v2
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: test-results
 
     - name: Install Windows dependencies
       if: ${{ runner.os == 'Windows' }}
