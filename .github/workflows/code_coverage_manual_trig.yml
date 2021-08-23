@@ -115,6 +115,7 @@ jobs:
 
   Publish results:
     name: Publish results
+    needs: coverage
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
