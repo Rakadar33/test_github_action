@@ -113,7 +113,7 @@ jobs:
         name: code-coverage
         path: D:\a\Luos\test\CodeCoverage\merged.info
 
-  Publish results:
+  Publish_results:
     name: Publish results
     needs: coverage
     runs-on: windows-latest
