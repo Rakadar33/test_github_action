@@ -66,7 +66,8 @@ jobs:
         #
         cd Luos      
         ls .\.pio\build\native\test\memory_allocator\        
-        mkdir .\test\CodeCoverage
+        #mkdir .\test\CodeCoverage
+        mkdir D:\a\Luos\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
 
         # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
