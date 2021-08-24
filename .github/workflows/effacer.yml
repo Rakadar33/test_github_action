@@ -23,7 +23,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-- name: echo-var
+    - name: echo-var
       run: |
         echo test var global
         echo $WINDOWS_WORKSPACE
