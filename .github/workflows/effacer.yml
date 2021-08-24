@@ -18,7 +18,7 @@ jobs:
         os: [windows-latest]
         include:
         - os: windows-latest
-          pio_lib_path: $WINDOWS_WORKSPACE
+          pio_lib_path: ${{env.WINDOWS_WORKSPACE}}
 
     steps:
     - uses: actions/checkout@v2
@@ -26,7 +26,8 @@ jobs:
     - name: echo-var
       run: |
         echo test_111
-        echo $WINDOWS_WORKSPACE
+        echo ${{env.WINDOWS_WORKSPACE}}
+        
       continue-on-error: true        
 
     - name: Create Workspace
@@ -38,7 +39,7 @@ jobs:
         ls        
         mkdir Luos
         ls
-        cd $WINDOWS_WORKSPACE        
+        cd ${{env.WINDOWS_WORKSPACE}}        
         ls
       continue-on-error: true                
 
@@ -49,12 +50,12 @@ jobs:
         cd abcd        
         echo 1 > test.txt
         cat test.txt
-        continue-on-error: true        
+      continue-on-error: true        
 
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: $WINDOWS_WORKSPACE/*
+        path: ${{env.WINDOWS_WORKSPACE}}/*
         key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
@@ -74,13 +75,13 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: $WINDOWS_WORKSPACE/*
+        path: ${{env.WINDOWS_WORKSPACE}}/*
         key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
 
     - name: st1
       run: |
         cd\
-        cd $WINDOWS_WORKSPACE
+        cd ${{env.WINDOWS_WORKSPACE}}
         ls
         cd abcd
         ls
