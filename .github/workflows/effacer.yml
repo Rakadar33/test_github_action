@@ -23,11 +23,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+- name: echo var
+      run: |
+        echo test var global
+        echo $WINDOWS_WORKSPACE
 
     - name: Create Workspace
       run: |
+        D:
+        ls        
         cd\
-        mkdir $WINDOWS_WORKSPACE
+        mkdir a
+        ls        
+        cd a
+        ls        
+        mkdir Luos
         ls
         cd $WINDOWS_WORKSPACE        
         ls
