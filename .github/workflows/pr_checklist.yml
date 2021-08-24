@@ -1,7 +1,11 @@
-name: 'PR TaskList Completed Checker'
+name: 'PR Checklist'
 on: 
   pull_request:
-    types: [edited, opened, synchronize, reopened]
+    types: [assigned, closed]    
+    # TODO : to be launched by CD job
+    # TODO : to be launched by CD job
+    # TODO : to be launched by CD job
+  workflow_dispatch:
 
 jobs:
   task-check:
