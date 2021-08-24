@@ -111,14 +111,14 @@ jobs:
       continue-on-error: true   
       
     - name: st000
-    - run: |      
+      run: |      
         D:
         ls        
         cd "${{ env.WINDOWS_WORKSPACE }}"        
         ls      
 
     - name: st111
-    - run: cat file.txt
+      run: cat file.txt
 
     - name: st1
       run: |
