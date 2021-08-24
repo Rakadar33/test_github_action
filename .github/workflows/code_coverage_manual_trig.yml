@@ -4,7 +4,6 @@ on:
   workflow_dispatch:
 
 
-
 jobs:
   #------------------------------------------
   build_and_test:
@@ -65,18 +64,7 @@ jobs:
         name: result
         path: luos.Zip
 
-    #- uses: actions/upload-artifact@v2
-    #  with:
-    #    name: test-results
-    #    path: $WINDOWS_WORKSPACE\Luos
 
-    #- uses: actions/cache@v2
-    #  id: test-results
-    #  with:
-    #    path: $WINDOWS_WORKSPACE/*
-    #    #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
-    #    #key: ${{ runner.os }}-${{ (Get-Date).ToFileTime() }}-result
-    #    key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
   coverage:
@@ -104,32 +92,27 @@ jobs:
         Expand-Archive -LiteralPath luos.Zip -DestinationPath .
         ls
 
-    #- uses: actions/cache@v2
-    #  id: test-results
-    #  with:
-    #   path: $WINDOWS_WORKSPACE/*
-    #    key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
-
-    #- uses: actions/download-artifact@v2
-    #  with:
-    #    name: test-results
-
-    # A REMETTRE
-    #- name: Install Windows dependencies
-    #  if: ${{ runner.os == 'Windows' }}
-    #  run: |
-    #    choco install strawberryperl
-    #    choco install golang
-    #    choco install lcov
+    - name: Install Windows dependencies
+      if: ${{ runner.os == 'Windows' }}
+      run: |
+        choco install strawberryperl
+        choco install golang
+        choco install lcov
 
     - name: Coverage generation
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
-        Get-Item -Path Env:*
+        # Get-Item -Path Env:*
         ls
         mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
+
+        ls
+        Get-ChildItem -Path . -Filter *.gcda -Recurse -ErrorAction SilentlyContinue -Force
+        Get-ChildItem -Path . -Filter *.gcno -Recurse -ErrorAction SilentlyContinue -Force
+        Get-ChildItem -Path . -Filter *.gcov -Recurse -ErrorAction SilentlyContinue -Force
+        Get-ChildItem -Path . -Filter *.info -Recurse -ErrorAction SilentlyContinue -Force
 
         # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
         $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcda .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcda .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcda"
