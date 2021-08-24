@@ -84,9 +84,10 @@ jobs:
   #------------------------------------------
     name: Code Coverage
     needs: build_and_test
-    runs-on: [windows-latest, "${{ needs.build_and_test.outputs.coverageTag }}"]
-    #runs-on: [windows-latest]
+    #runs-on: [windows-latest, "${{ needs.build_and_test.outputs.coverageTag }}"]
+    runs-on: [windows-latest]
 
+    if: ${{ needs.build_and_test.outputs.coverageTag == 'Windows' }}
     steps:
     - uses: actions/checkout@v2
 
