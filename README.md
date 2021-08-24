@@ -1,6 +1,6 @@
 # test_github_action
 
-Simple overview of use/purpose. ABCDE
+Simple overview of use/purpose. A
 
 ## Description
 
