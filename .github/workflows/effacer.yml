@@ -18,7 +18,7 @@ jobs:
         os: [windows-latest]
         include:
         - os: windows-latest
-          pio_lib_path: ${{ env.WINDOWS_WORKSPACE }}
+          pio_lib_path: ${{ WINDOWS_WORKSPACE }}
 
     steps:
     - uses: actions/checkout@v2
@@ -26,7 +26,7 @@ jobs:
     - name: echo-var
       run: |
         echo test_111
-        echo ${{ env.WINDOWS_WORKSPACE }}
+        echo ${{ WINDOWS_WORKSPACE }}
         
       continue-on-error: true        
 
@@ -39,7 +39,7 @@ jobs:
         ls        
         mkdir Luos
         ls
-        cd ${{ env.WINDOWS_WORKSPACE }}        
+        cd ${{ WINDOWS_WORKSPACE }}        
         ls
       continue-on-error: true                
 
@@ -55,7 +55,7 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: ${{ env.WINDOWS_WORKSPACE }}/*
+        path: ${{ WINDOWS_WORKSPACE }}/*
         key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
@@ -75,13 +75,13 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: ${{ env.WINDOWS_WORKSPACE }}/*
+        path: ${{ WINDOWS_WORKSPACE }}/*
         key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
 
     - name: st1
       run: |
         cd\
-        cd ${{ env.WINDOWS_WORKSPACE }}
+        cd ${{ WINDOWS_WORKSPACE }}
         ls
         cd abcd
         ls
