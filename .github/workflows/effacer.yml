@@ -58,8 +58,10 @@ jobs:
         d:
         cd D:\a\Luos
         echo 22222 > test2.txt
+        mkdir azerty
+        cd azerty
         echo 33333 > test3.txt        
-        cat test2.txt
+        cat test3.txt
         mkdir new
         cd new
         echo 44444> test4.txt                
