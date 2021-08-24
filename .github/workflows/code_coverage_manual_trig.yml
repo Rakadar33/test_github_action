@@ -3,10 +3,7 @@ name: code coverage
 on:
   workflow_dispatch:
 
-env:
-  UBUNTU_WORKSPACE: "xxx"
-  MACOS_WORKSPACE: "xxx"  
-  WINDOWS_WORKSPACE: "D:\\a\\Luos"
+
 
 jobs:
   #------------------------------------------
@@ -18,7 +15,7 @@ jobs:
         os: [windows-latest]
         include:
         - os: windows-latest
-          pio_lib_path: $WINDOWS_WORKSPACE
+          pio_lib_path: D:\a\Luos
 
     steps:
     - uses: actions/checkout@v2
@@ -58,20 +55,29 @@ jobs:
         $env:PLATFORMIO_LIB_EXTRA_DIRS = Split-Path -Path $curDir -Parent
         # platformio run -t clean;platformio test -e native -v --filter "*mem*" -i CodeCoverage
         platformio run -t clean;platformio test -i CodeCoverage
-        ls .\.pio\build\native\test\memory_allocator\
+
+    - name: Zip directory
+      run: |
+        cd Luos
+        Compress-Archive -Path .\Luos\* -DestinationPath luos.Zip
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: result
+        path: luos.Zip
 
     #- uses: actions/upload-artifact@v2
     #  with:
     #    name: test-results
     #    path: $WINDOWS_WORKSPACE\Luos
 
-    - uses: actions/cache@v2
-      id: test-results
-      with:
-        path: $WINDOWS_WORKSPACE/*
-        #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
-        #key: ${{ runner.os }}-${{ (Get-Date).ToFileTime() }}-result
-        key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
+    #- uses: actions/cache@v2
+    #  id: test-results
+    #  with:
+    #    path: $WINDOWS_WORKSPACE/*
+    #    #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+    #    #key: ${{ runner.os }}-${{ (Get-Date).ToFileTime() }}-result
+    #    key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
   coverage:
@@ -87,11 +93,24 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
-      id: test-results
+    - uses: actions/download-artifact@v1
       with:
-        path: $WINDOWS_WORKSPACE/*
-        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+         name: result
+      
+    - name: Go to results
+      run: |
+        ls
+        cd result
+        ls
+        Expand-Archive -LiteralPath luos.Zip -DestinationPath .
+        ls
+
+
+    #- uses: actions/cache@v2
+    #  id: test-results
+    #  with:
+    #   path: $WINDOWS_WORKSPACE/*
+    #    key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
 
     #- uses: actions/download-artifact@v2
     #  with:
@@ -111,13 +130,7 @@ jobs:
         #
         Get-Item -Path Env:*
         ls
-        cd\
-        ls
-        cd $WINDOWS_WORKSPACE
-        ls
-        ls .\.pio\build\native\test\memory_allocator\        
-        #mkdir .\test\CodeCoverage
-        mkdir $WINDOWS_WORKSPACE\test\CodeCoverage
+        mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
 
         # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
@@ -137,11 +150,12 @@ jobs:
         Invoke-Expression $command_genhtml
         ls .\test\CodeCoverage
 
-    - name: zip
-      run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
+    #- name: zip
+    #  run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
 
     - name: Publish artifact on Readme
-      run: ls
+      run: |
+        ls
       #uses: zgosalvez/github-actions-report-lcov@49af65b0586c274a625a41a2dc8aaaae7d00568b
       #with:
       #  coverage-files: $WINDOWS_WORKSPACE\test\CodeCoverage\merged.info
