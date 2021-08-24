@@ -107,6 +107,8 @@ jobs:
       
     - name: first
       run: |
+        ls
+        cd .\a\Luos\
         cat test2.txt
       continue-on-error: true   
       
