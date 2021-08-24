@@ -20,16 +20,19 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Set up Python
+      if: ${{ runner.os == 'Windows' }}
       uses: actions/setup-python@v1
       with:
         python-version: '3.x'
 
     - name: Set up Node
+      if: ${{ runner.os == 'Windows' }}
       uses: actions/setup-node@v2
       with:
         node-version: '14'
 
     - name: Install dependencies
+      if: ${{ runner.os == 'Windows' }}
       run: |
         python -m pip install --upgrade pip
         pip install platformio
@@ -40,6 +43,7 @@ jobs:
 
     - name: Create env repo
       shell: bash
+      if: ${{ runner.os == 'Windows' }}
       run: |
         git clone https://github.com/Rakadar33/Luos.git
         cd Luos
@@ -48,6 +52,7 @@ jobs:
     - name: Run PlatformIO Unit tests
       env:
         PLATFORMIO_LIB_EXTRA_DIRS: ${{ matrix.pio_lib_path }}
+      if: ${{ runner.os == 'Windows' }}
       run: |
         cd Luos
         $curDir = Get-Location
@@ -56,6 +61,7 @@ jobs:
         platformio run -t clean;platformio test -i CodeCoverage
 
     - name: Zip directory
+      if: ${{ runner.os == 'Windows' }}
       run: |
         Compress-Archive -Path .\Luos\* -DestinationPath luos.Zip
 
@@ -121,8 +127,8 @@ jobs:
         ls
         ls .\.pio\
         ls .\.pio\build\native\test\memory_allocator_tx\
-         Get-ChildItem -Path . -Filter *.gcno -Recurse -ErrorAction SilentlyContinue -Force
-         Get-ChildItem -Path . -Filter *.gcda -Recurse -ErrorAction SilentlyContinue -Force         
+        Get-ChildItem -Path . -Filter *.gcno -Recurse -ErrorAction SilentlyContinue -Force
+        Get-ChildItem -Path . -Filter *.gcda -Recurse -ErrorAction SilentlyContinue -Force         
         
         # ----- $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcno .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcno .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcno"
         $command_gcov=     (Get-Command gcov.exe).Path + " .\.pio\build\native\test\memory_allocator\unit_test_mem_alloc.gcda .\.pio\build\native\test\memory_allocator_static\unit_test_mem_alloc_static.gcda .\.pio\build\native\test\memory_allocator_tx\unit_test_mem_alloc_tx.gcda"
