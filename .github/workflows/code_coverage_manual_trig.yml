@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [windows-latest, ubuntu-latest]
         include:
         - os: windows-latest
           pio_lib_path: D:\a\Luos
@@ -77,6 +77,10 @@ jobs:
       with:
         name: result
         path: luos.Zip
+   
+    - name: Create ouput coverageTag
+      if: ${{ runner.os == 'Windows' }}
+      run: env=
    
     outputs:
       coverageTag: 'true'
