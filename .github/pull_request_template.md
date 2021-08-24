@@ -1,5 +1,5 @@
 ## Checklist
-- [ ] TODO : cf process
+- [ ] TODO : cf process (version , registry, ...)
 - [ ] Verified version(s)
 - [ ] Ran manual tests
 - [ ] Etc
