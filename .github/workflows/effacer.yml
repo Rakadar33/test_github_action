@@ -44,7 +44,7 @@ jobs:
         ls
       continue-on-error: true                
 
-    - name: Create Workspace
+    - name: Create Workspace22
       run: |
         mkdir abcd
         ls
@@ -53,11 +53,20 @@ jobs:
         cat test.txt
       continue-on-error: true        
 
-    - uses: actions/cache@v2
+
+    - name: Cache Modules
       id: test-results
+      uses: actions/cache@v2
       with:
         path: ${{ env.WINDOWS_WORKSPACE }}/*
         key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
+        #key: node-modules-${{ hashFiles('package-lock.json') }}
+
+    #- uses: actions/cache@v2
+    #  id: test-results
+    #  with:
+    #    path: ${{ env.WINDOWS_WORKSPACE }}/*
+    #    key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
   coverage:
