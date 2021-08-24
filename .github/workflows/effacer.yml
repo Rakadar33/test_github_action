@@ -34,8 +34,6 @@ jobs:
         D:
         ls        
         cd\
-        mkdir a
-        ls        
         cd a
         ls        
         mkdir Luos
