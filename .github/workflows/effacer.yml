@@ -9,9 +9,6 @@ env:
   WINDOWS_WORKSPACE: 'D:\a\Luos'
 
 
-
-
-
 jobs:
   #------------------------------------------
   build_and_test:
@@ -43,7 +40,7 @@ jobs:
         ls        
         mkdir Luos
         ls
-        cd ${{ WINDOWS_WORKSPACE }}        
+        cd "${{ env.WINDOWS_WORKSPACE }}"        
         ls
       continue-on-error: true                
 
@@ -59,7 +56,7 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: ${{ WINDOWS_WORKSPACE }}/*
+        path: ${{ env.WINDOWS_WORKSPACE }}/*
         key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
   #------------------------------------------
@@ -79,13 +76,13 @@ jobs:
     - uses: actions/cache@v2
       id: test-results
       with:
-        path: ${{ WINDOWS_WORKSPACE }}/*
+        path: ${{ env.WINDOWS_WORKSPACE }}/*
         key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
 
     - name: st1
       run: |
         cd\
-        cd ${{ WINDOWS_WORKSPACE }}
+        cd ${{ env.WINDOWS_WORKSPACE }}
         ls
         cd abcd
         ls
