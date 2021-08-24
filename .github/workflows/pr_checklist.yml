@@ -1,12 +1,18 @@
 name: 'PR Checklist'
 on: 
   pull_request:
+    # TODO : to be launched by CD job ??
+    # TODO : to be launched by CD job ??
+    # TODO : to be launched by CD job ??
     #types: [assigned]    
-    types: [closed]    
-    # TODO : to be launched by CD job
-    # TODO : to be launched by CD job
-    # TODO : to be launched by CD job
-  workflow_dispatch:
+    #types: [closed]        
+    types: [opened]
+
+on:
+  push:
+    branches:
+      - master
+
 
 jobs:
   task-check:
