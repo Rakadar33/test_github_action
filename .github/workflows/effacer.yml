@@ -51,7 +51,15 @@ jobs:
         cd abcd        
         echo 1 > test.txt
         cat test.txt
-      continue-on-error: true        
+      continue-on-error: true    
+      
+    - name: Create Workspace22
+      run: |
+        d:
+        cd D:\a\Luos
+        echo 22222 > test2.txt
+        cat test2.txt
+      continue-on-error: true          
 
     - uses: actions/upload-artifact@v1
       with:
