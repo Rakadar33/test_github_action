@@ -53,15 +53,19 @@ jobs:
         cat test.txt
       continue-on-error: true        
 
+      - uses: actions/upload-artifact@v1
+        with:
+          name: file
+          path: test.txt
 
-    - name: Cache Modules
-      id: test-results
-      uses: actions/cache@v2
-      with:
-        path: ${{ env.WINDOWS_WORKSPACE }}/*
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
-        #key: node-modules-${{ hashFiles('package-lock.json') }}
+    #- name: Cache Modules
+    #  id: test-results
+    #  uses: actions/cache@v2
+    #  with:
+    #    path: ${{ env.WINDOWS_WORKSPACE }}/*
+    #    #key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    #    #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+    #    #key: node-modules-${{ hashFiles('package-lock.json') }}
 
     #- uses: actions/cache@v2
     #  id: test-results
@@ -83,11 +87,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - uses: actions/cache@v2
-      id: test-results
-      with:
-        path: ${{ env.WINDOWS_WORKSPACE }}/*
-        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+    #- uses: actions/cache@v2
+    #  id: test-results
+    #  with:
+    #    path: ${{ env.WINDOWS_WORKSPACE }}/*
+    #    key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+
+      - uses: actions/download-artifact@v1
+        with:
+          name: file
+      
+      - run: cat file.txt
 
     - name: st1
       run: |
