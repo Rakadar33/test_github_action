@@ -83,14 +83,6 @@ jobs:
     - uses: actions/download-artifact@v1
       with:
          name: result
-      
-    - name: Go to results
-      run: |
-        ls
-        cd ./result        
-        ls
-        Expand-Archive -LiteralPath luos.Zip -DestinationPath .
-        ls
 
     - name: Install Windows dependencies
       if: ${{ runner.os == 'Windows' }}
@@ -99,15 +91,24 @@ jobs:
         choco install golang
         choco install lcov
 
+    - name: Unzip artifact
+      run: |
+        ls
+        cd ./result        
+        ls
+        Expand-Archive -LiteralPath luos.Zip -DestinationPath .
+        ls
+
     - name: Coverage generation
       run: |
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
         # Get-Item -Path Env:*
         ls
+        cd ./result        
+        ls
         mkdir .\test\CodeCoverage
         $path=split-path (Get-Command chocolatey).Path
-
         ls
         Get-ChildItem -Path . -Filter *.gcda -Recurse -ErrorAction SilentlyContinue -Force
         Get-ChildItem -Path . -Filter *.gcno -Recurse -ErrorAction SilentlyContinue -Force
