@@ -55,8 +55,8 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: file
-        path: test.txt
+        name: workspace
+        path: "${{ env.WINDOWS_WORKSPACE }}"
 
     #- name: Cache Modules
     #  id: test-results
@@ -95,7 +95,13 @@ jobs:
 
     - uses: actions/download-artifact@v1
       with:
-        name: file
+        name: workspace
+      
+    - run: |      
+        D:
+        ls        
+        cd "${{ env.WINDOWS_WORKSPACE }}"        
+        ls      
       
     - run: cat file.txt
 
