@@ -115,6 +115,8 @@ jobs:
     - name: first
       run: |
         ls
+        cd result
+        ls
         Expand-Archive -LiteralPath .\result.zip -DestinationPath .
         ls
       continue-on-error: true
