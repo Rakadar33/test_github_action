@@ -71,12 +71,12 @@ jobs:
         name: result
         path: luos.Zip
    
-    #- name: Create ouput coverageTag
-    #  if: ${{ runner.os == 'Windows' }}
+    #- if: ${{ runner.os == 'windows-latest' }}   
+    #  name: Create ouput coverageTag
     #  run: env=
    
-    #outputs:
-    #  coverageTag: 'true'
+    outputs:
+      coverageTag: ${{ runner.os }}
 
         
   #------------------------------------------
@@ -84,8 +84,8 @@ jobs:
   #------------------------------------------
     name: Code Coverage
     needs: build_and_test
-    #runs-on: [windows-latest, "${{ needs.build_and_test.outputs.coverageTag }}"]
-    runs-on: [windows-latest]
+    runs-on: [windows-latest, "${{ needs.build_and_test.outputs.coverageTag }}"]
+    #runs-on: [windows-latest]
 
     steps:
     - uses: actions/checkout@v2
