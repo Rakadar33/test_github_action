@@ -55,8 +55,8 @@ jobs:
 
     - uses: actions/upload-artifact@v1
       with:
-        name: workspace
-        path: "${{ env.WINDOWS_WORKSPACE }}/*"
+        name: test_workspace
+        path: "${{ env.WINDOWS_WORKSPACE }}\"
 
     #- name: Cache Modules
     #  id: test-results
@@ -95,7 +95,7 @@ jobs:
 
     - uses: actions/download-artifact@v1
       with:
-        name: workspace
+        name: test_workspace
       
     - run: |      
         D:
