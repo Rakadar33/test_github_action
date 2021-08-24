@@ -60,7 +60,7 @@ jobs:
         # platformio run -t clean;platformio test -e native -v --filter "*mem*" -i CodeCoverage
         platformio run -t clean;platformio test -i CodeCoverage
 
-    - name: Zip directory
+    - name: Zip woekspace directory
       if: ${{ runner.os == 'Windows' }}
       run: |
         Compress-Archive -Path .\Luos\* -DestinationPath luos.Zip
