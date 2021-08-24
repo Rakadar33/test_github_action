@@ -59,7 +59,7 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.WINDOWS_WORKSPACE }}/*
-        key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
+        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
         #key: node-modules-${{ hashFiles('package-lock.json') }}
 
     #- uses: actions/cache@v2
@@ -71,7 +71,7 @@ jobs:
   #------------------------------------------
   coverage:
   #------------------------------------------
-    name: ererer
+    name: cache-restore
     needs: build_and_test
 
     runs-on: ${{ matrix.os }}
@@ -90,11 +90,13 @@ jobs:
 
     - name: st1
       run: |
+        D:
+        ls        
         cd\
-        cd ${{ env.WINDOWS_WORKSPACE }}
-        ls
-        cd abcd
-        ls
+        cd a
+        ls        
+        cd Luos
+        ls                
       continue-on-error: true                
 
     - name: st2
