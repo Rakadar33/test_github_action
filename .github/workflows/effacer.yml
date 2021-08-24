@@ -4,9 +4,13 @@ on:
   workflow_dispatch:
 
 env:
-  UBUNTU_WORKSPACE: xxx
-  MACOS_WORKSPACE: xxx  
-  WINDOWS_WORKSPACE: D:\\a\\Luos
+  UBUNTU_WORKSPACE: '~/work/Luos'
+  MACOS_WORKSPACE: '~/work/Luos'  
+  WINDOWS_WORKSPACE: 'D:\a\Luos'
+
+
+
+
 
 jobs:
   #------------------------------------------
@@ -18,7 +22,7 @@ jobs:
         os: [windows-latest]
         include:
         - os: windows-latest
-          pio_lib_path: ${{ WINDOWS_WORKSPACE }}
+          pio_lib_path: D:\a\Luos
 
     steps:
     - uses: actions/checkout@v2
@@ -26,7 +30,7 @@ jobs:
     - name: echo-var
       run: |
         echo test_111
-        echo ${{ WINDOWS_WORKSPACE }}
+        echo "${{ env.WINDOWS_WORKSPACE }}"
         
       continue-on-error: true        
 
