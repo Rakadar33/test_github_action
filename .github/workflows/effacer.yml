@@ -59,7 +59,8 @@ jobs:
       uses: actions/cache@v2
       with:
         path: ${{ env.WINDOWS_WORKSPACE }}/*
-        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
         #key: node-modules-${{ hashFiles('package-lock.json') }}
 
     #- uses: actions/cache@v2
