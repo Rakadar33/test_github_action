@@ -5,20 +5,6 @@ on:
 
 
 jobs:
-  #------------------------------------------
-  inutile:
-  #------------------------------------------
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: pwd
-      run: pwd
-
 #------------------------------------------
   build_and_test:
   #------------------------------------------
@@ -78,12 +64,12 @@ jobs:
         name: result
         path: luos.Zip
    
-    - name: Create ouput coverageTag
-      if: ${{ runner.os == 'Windows' }}
-      run: env=
+    #- name: Create ouput coverageTag
+    #  if: ${{ runner.os == 'Windows' }}
+    #  run: env=
    
-    outputs:
-      coverageTag: 'true'
+    #outputs:
+    #  coverageTag: 'true'
 
         
   #------------------------------------------
@@ -153,7 +139,6 @@ jobs:
         Invoke-Expression $command_lcov
         ls
         Invoke-Expression $command_genhtml
-        ls .\test\CodeCoverage
 
     #- name: zip
     #  run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
