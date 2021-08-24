@@ -53,10 +53,10 @@ jobs:
         cat test.txt
       continue-on-error: true        
 
-      - uses: actions/upload-artifact@v1
-        with:
-          name: file
-          path: test.txt
+    - uses: actions/upload-artifact@v1
+      with:
+        name: file
+        path: test.txt
 
     #- name: Cache Modules
     #  id: test-results
@@ -93,11 +93,11 @@ jobs:
     #    path: ${{ env.WINDOWS_WORKSPACE }}/*
     #    key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
 
-      - uses: actions/download-artifact@v1
-        with:
-          name: file
+    - uses: actions/download-artifact@v1
+      with:
+        name: file
       
-      - run: cat file.txt
+    - run: cat file.txt
 
     - name: st1
       run: |
