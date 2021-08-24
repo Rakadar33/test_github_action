@@ -6,6 +6,20 @@ on:
 
 jobs:
   #------------------------------------------
+  inutile:
+  #------------------------------------------
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: pwd
+      run: pwd
+
+#------------------------------------------
   build_and_test:
   #------------------------------------------
     runs-on: ${{ matrix.os }}
@@ -63,7 +77,9 @@ jobs:
       with:
         name: result
         path: luos.Zip
-
+   
+    outputs:
+      coverageTag: 'true'
 
         
   #------------------------------------------
@@ -71,11 +87,7 @@ jobs:
   #------------------------------------------
     name: Code Coverage
     needs: build_and_test
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest]
+    runs-on: [windows-latest, "${{ needs.build_and_test.outputs.coverageTag }}"]
 
     steps:
     - uses: actions/checkout@v2
