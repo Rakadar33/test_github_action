@@ -117,7 +117,14 @@ jobs:
         #
 
         cd ./result        
-        #mkdir .\test\CodeCoverage
+        
+        $directoyPath=".\test\CodeCoverage";
+        if(!(Test-Path -path $directoyPath))  
+        {  
+            New-Item -ItemType directory -Path $directoyPath
+            Write-Host "Folder path has been created successfully at: " $directoyPath
+        }
+                
         $path=split-path (Get-Command chocolatey).Path
 
         ls
