@@ -99,11 +99,10 @@ jobs:
     - name: Go to results
       run: |
         ls
-        cd result
-        ls
         Expand-Archive -LiteralPath luos.Zip -DestinationPath .
         ls
-
+        cd result
+        ls
 
     #- uses: actions/cache@v2
     #  id: test-results
