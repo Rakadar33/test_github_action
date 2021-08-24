@@ -1,7 +1,8 @@
 name: 'PR Checklist'
 on: 
   pull_request:
-    types: [assigned, closed]    
+    #types: [assigned]    
+    types: [closed]    
     # TODO : to be launched by CD job
     # TODO : to be launched by CD job
     # TODO : to be launched by CD job
