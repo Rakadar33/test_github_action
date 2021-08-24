@@ -69,9 +69,10 @@ jobs:
       id: test-results
       with:
         path: $WINDOWS_WORKSPACE/*
-        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+        #key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+        #key: ${{ runner.os }}-${{ (Get-Date).ToFileTime() }}-result
+        key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
         
-          
   #------------------------------------------
   coverage:
   #------------------------------------------
