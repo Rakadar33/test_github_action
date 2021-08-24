@@ -1,0 +1,79 @@
+name: aaa
+
+on:
+  workflow_dispatch:
+
+env:
+  UBUNTU_WORKSPACE: "xxx"
+  MACOS_WORKSPACE: "xxx"  
+  WINDOWS_WORKSPACE: "D:\\a\\Luos"
+
+jobs:
+  #------------------------------------------
+  build_and_test:
+  #------------------------------------------
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+        include:
+        - os: windows-latest
+          pio_lib_path: $WINDOWS_WORKSPACE
+
+    steps:
+    - uses: actions/checkout@v2
+    
+
+    - name: Create Workspace
+      run: |
+        cd\
+        mkdir $WINDOWS_WORKSPACE
+        ls
+        cd $WINDOWS_WORKSPACE        
+        ls
+
+    - name: Create Workspace
+      run: |
+        mkdir abcd
+        ls
+        cd abcd        
+        echo 1 > test.txt
+        cat test.txt
+
+    - uses: actions/cache@v2
+      id: test-results
+      with:
+        path: $WINDOWS_WORKSPACE/*
+        key: ${{ runner.os }}-${{ steps.date.outputs.date }}-result
+        
+  #------------------------------------------
+  coverage:
+  #------------------------------------------
+    name: ererer
+    needs: build_and_test
+
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      id: test-results
+      with:
+        path: $WINDOWS_WORKSPACE/*
+        key: ${{ runner.os }}-${{ steps.get-date.outputs.date }}-result
+
+    - name: st1
+      run: |
+        cd\
+        cd $WINDOWS_WORKSPACE
+        ls
+        cd abcd
+        ls
+
+    - name: st2
+      run: |
+        cat test.txt
