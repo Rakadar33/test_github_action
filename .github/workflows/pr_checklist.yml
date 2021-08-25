@@ -6,7 +6,7 @@ on:
     # TODO : to be launched by CD job ??
     # TODO : to be launched by CD job ??
     #types: [assigned]        #types: [closed]          types: [opened]
-    types: [opened]
+    types: [opened, reopened]
 
 on:
   push:
