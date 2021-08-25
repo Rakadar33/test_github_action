@@ -1,12 +1,12 @@
 name: 'PR Checklist'
 on: 
-  status:
-   #pull_request:
+  #status:
+  pull_request:
     # TODO : to be launched by CD job ??
     # TODO : to be launched by CD job ??
     # TODO : to be launched by CD job ??
     #types: [assigned]        #types: [closed]          types: [opened]
-    #types: [opened]
+    types: [opened]
 
 on:
   push:
