@@ -1,6 +1,4 @@
-## --------------
 ## Checklist
-## --------------
 
 
 ## Commits
@@ -43,5 +41,5 @@
 
 
 ## TODO after merging to main branch :
-##   -> Add a tag version for the new release
-##   -> Check publication of Luos libraries are deployed on platformio registery (https://platformio.org/lib) (à automatiser)
+#   -> Add a tag version for the new release
+#   -> Check publication of Luos libraries are deployed on platformio registery (https://platformio.org/lib) (à automatiser)
