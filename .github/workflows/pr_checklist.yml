@@ -1,0 +1,19 @@
+name: 'Release Checklist'
+on: 
+  #status:
+  pull_request:
+    # TODO : to be launched by CD job ??
+    # TODO : to be launched by CD job ??
+    # TODO : to be launched by CD job ??
+    #types: [assigned]        #types: [closed]          types: [opened]
+    types: [opened, reopened]
+    branches:
+      - master
+
+jobs:
+  task-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
