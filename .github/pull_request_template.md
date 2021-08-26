@@ -1,7 +1,11 @@
 ## Pull request comments
-- Add here your comments...
+- Add here your comments :
+- ...
+- ...
 
 
+
+##
 ## WARNING : please do not change bottom checklist
 ## Checklist
 
