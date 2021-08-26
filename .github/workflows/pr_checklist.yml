@@ -1,4 +1,4 @@
-name: 'PR Checklist'
+name: 'Release Checklist'
 on: 
   #status:
   pull_request:
