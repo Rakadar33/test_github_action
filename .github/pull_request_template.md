@@ -1,4 +1,4 @@
-## **** Checklist****
+# **Checklist for merging to main branch**
 
 ## Commits
 - [ ] Verify commits policy is respected
