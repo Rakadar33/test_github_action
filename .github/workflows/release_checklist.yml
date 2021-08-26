@@ -12,7 +12,7 @@ on:
     types: [edited, opened, synchronize, reopened]  
     branches:
       - master
-      - rc_candidate
+      #- rc_candidate
       
 jobs:
   task-check:
