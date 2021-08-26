@@ -1,6 +1,6 @@
 name : Environment variables
 
-on: [workflow_dispatch:]
+on: [workflow_dispatch]
 #A REMETTRE on: push
 env:
   WORKFLOW_ENV: Available to all Jobs
