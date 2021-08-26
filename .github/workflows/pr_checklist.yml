@@ -1,14 +1,16 @@
 name: 'Release Checklist'
 on: 
   #status:
-  pull_request:
-    # TODO : to be launched by CD job ??
-    # TODO : to be launched by CD job ??
-    # TODO : to be launched by CD job ??
-    #types: [assigned]        #types: [closed]          types: [opened]
-    types: [opened, reopened]
-    branches:
-      - master
+  
+  #pull_request:
+  #  # TODO : to be launched by CD job ??
+  #  # TODO : to be launched by CD job ??
+  #  # TODO : to be launched by CD job ??
+  #  #types: [assigned]        #types: [closed]          types: [opened]
+  #  types: [opened, reopened]
+  #   branches:
+  #    - master
+  workflow_dispatch:
 
 jobs:
   task-check:
