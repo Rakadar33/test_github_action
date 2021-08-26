@@ -37,6 +37,7 @@
 - [ ] Existing tests (non regression) are passed OK (c'est dans les workflows)
 - [ ] Tests for new features exists and are passed OK (c'est dans les workflows)
 - [ ] Tests for bug fixes exists and are passed OK
+- [ ] Check opened issues don't need to be corrected in current release
 - [ ] If Code coverage < X% = block merge ??? (à automatiser)
 
 
