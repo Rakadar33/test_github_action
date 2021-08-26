@@ -31,10 +31,6 @@
 - [ ] If Code coverage < X% = block merge ??? (à automatiser)
 
 
-## Deployment
-- [ ] Zip package created (https://github.com/Luos-io/Tools)
-
-
 ## Etc (to be completed if needed)
 - [ ] aaa
 - [ ] bbb
@@ -42,4 +38,5 @@
 
 ## TODO after merging to main branch :
 - Add a tag version for the new release
+- Deployment : zip package created (https://github.com/Luos-io/Tools) (à automatiser) 
 - Check publication of Luos libraries are deployed on platformio registery (https://platformio.org/lib) (à automatiser)
