@@ -11,7 +11,8 @@ on:
   #  types: [opened, reopened]
     types: [edited, opened, synchronize, reopened]  
     branches:
-      - rc_candidate
+      - main
+      #- rc_candidate      
 
 jobs:
   task-check:
