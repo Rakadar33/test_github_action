@@ -42,6 +42,9 @@
 - [ ] All new manual tests results are reviewed
 - [ ] Manual tests are passed OK
 - [ ] All GitHub actions workflows are OK (build, compiled, unit tests ...)
+```diff
+@@ Note : C'est fait automatiquement. Peut-être garder la possibilité de ne pas mettre tous les worflows en status check ?@@
+```
 - [ ] Existing tests (non regression) are passed OK
 ```diff
 @@ Note : C'est déjà dans les workflows@@
