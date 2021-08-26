@@ -1,7 +1,8 @@
 name: Actions Workflow_2
 
 on:
-  push:
+  workflow_dispatch:
+  # A REMETTRE push:
     #branches-ignore, can't be used with branches
     branches:
       # will be launched only if pushed on branch master
