@@ -1,6 +1,7 @@
 name: Actions Workflow
 
-on: [push]
+on: [workflow_dispatch:]
+# A REMETTRE on: [push]
 
 jobs:
   run-github-actions:
