@@ -14,7 +14,7 @@
 ## Versionning
 - [ ] Version numbers has been incremented in code files
 ```diff
-@@ Note : all repos Luos + HAL, Examples + profiles + ...  A voir si c'est facilement automatisable@@
+@@ Note : all repos Luos + HAL, Examples + profiles + json + platformio.ini...  A voir si c'est facilement automatisable. A priori pas des masses...@@
 ```
 - [ ] Version numbers has been incremented in documentations
 
