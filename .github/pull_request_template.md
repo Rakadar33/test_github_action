@@ -68,11 +68,18 @@
 
 ## TODO after merging to main branch :
 - Add a tag version for the new release
-- Deployment : zip package created (https://github.com/Luos-io/Tools)
+- Deployment : Create packages
+```diff
+@@ Note : A automatiser => création du zip(cf https://github.com/Luos-io/Tools) + envoyer au registery@@
+```
+```diff
+@@ Note : A automatiser => Idem pour pyluos@@
+```
+- Check publication of Luos libraries are deployed on platformio registry (https://platformio.org/lib)
 ```diff
 @@ Note : A automatiser@@
 ```
-- Check publication of Luos libraries are deployed on platformio registery (https://platformio.org/lib)
+- Non regression test on platformio registry
 ```diff
-@@ Note : A automatiser@@
+@@ Note : A automatiser. Pull les libs + pyluos => Tests à définir @@
 ```
