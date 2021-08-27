@@ -7,7 +7,7 @@
 ```
 - [ ] Every commit compils
 ```diff
-@@ Note : A automatiser@@
+@@ Note : A automatiser pour la release + régulièrement sur les rc_candidate, par exemple hebdomadairement@@
 ```
 
 
