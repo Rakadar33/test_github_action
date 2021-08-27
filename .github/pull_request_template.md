@@ -14,7 +14,7 @@
 ## Versionning
 - [ ] Version numbers has been incremented in code files
 ```diff
-@@ Note : all repos Luos + Examples + profiles + ... ?@@
+@@ Note : all repos Luos + HAL, Examples + profiles + ...  A voir si c'est facilement automatisable@@
 ```
 - [ ] Version numbers has been incremented in documentations
 
@@ -51,7 +51,7 @@
 ```
 - [ ] Tests for new features exists and are passed OK
 ```diff
-@@ Note : C'est déjà dans les workflows@@
+@@ Note : C'est déjà dans les workflows en partie : nouveaux tests unitaires + tests autos@@
 ```
 - [ ] Tests for bug fixes exists and are passed OK
 - [ ] Check opened issues don't need to be corrected in current release
