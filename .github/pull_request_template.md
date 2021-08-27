@@ -3,7 +3,7 @@
 ## Commits
 - [ ] Verify commits policy is respected
 ```diff
-@@ Note : "History is flatten" + commits propres et découpés en petites fonctionnalités@@
+@@ Note : "History is flatten" (fast-forward merge) + commits propres et découpés en petites fonctionnalités@@
 ```
 - [ ] Every commit compils
 ```diff
