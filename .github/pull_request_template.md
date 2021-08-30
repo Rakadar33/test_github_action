@@ -66,7 +66,7 @@
 
 
 
-## TODO after merging to main branch :
+## TODO after merging to main branch  (deployment job):
 - Add a tag version for the new release
 - Deployment : Create packages
 ```diff
