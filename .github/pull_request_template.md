@@ -1,30 +1,31 @@
 # **Checklist for merging to main branch**
 
 ## Commits
-- [ ] Verify commits policy is respected
+- [ ] Verify commits policy is respected  **DEV_PR**
 ```diff
 @@ Note : "History is flatten" (fast-forward merge) + commits propres et découpés en petites fonctionnalités@@
 ```
-- [ ] Every commit compils
+- [ ] Every commit compils **DEV_PR**
 ```diff
 @@ Note : A automatiser pour la release + régulièrement sur les rc_candidate, par exemple hebdomadairement@@
 ```
 
 
 ## Versionning
-- [ ] Version numbers has been incremented in code files
+- [ ] Version numbers has been incremented in code files  **RELEASE_PR**
 ```diff
 @@ Note : all repos Luos + HAL, Examples + profiles + json + platformio.ini...  A voir si c'est facilement automatisable. A priori pas des masses...@@
 ```
-- [ ] Version numbers has been incremented in documentations
+- [ ] Version numbers has been incremented in documentations **RELEASE_PR**
 
 
 ## Documentations
-- [ ] Documentation is up to date
-- [ ] Changelog is up-to-date with new functionnalities
-- [ ] Changelog is up-to-date with bug fixes
-- [ ] Changelog is up-to-date with known bugs
-- [ ] All new manual tests results are described
+- [ ] Documentation is up to date  **RELEASE_PR**
+- [ ] Changelog is up-to-date with new functionnalities  **DEV_PR**
+- [ ] Changelog is up-to-date with bug fixes  **DEV_PR**
+- [ ] Changelog is up-to-date with known bugs  **DEV_PR**
+- [ ] If needed, all new manual tests results are described  **DEV_PR**
+- [ ] Changelog is up-to-date with new functionnalities, bug fixes and eventually unfixes known bugs  **RELEASE_PR**
 ```diff
 @@ Note : Doc spécifique ???? dans le code ????@@
 ```
@@ -34,30 +35,33 @@
 
 
 ## Quality Assurance
-- [ ] Code is commented (particularly in hard to understand areas)
-- [ ] There are no new warnings
+- [ ] Code is commented (particularly in hard to understand areas) **DEV_PR**
+- [ ] There are no new warnings that can be corrected **DEV_PR**  and  **RELEASE_PR**
 ```diff
 @@ Note : A automatiser ???@@
 ```
-- [ ] All new manual tests results are reviewed
-- [ ] Manual tests are passed OK
-- [ ] All GitHub actions workflows are OK (build, linting, compiled, unit tests ...)
+- [ ] All new manual tests results are reviewed **DEV_PR**
+- [ ] Manual tests are passed OK **DEV_PR**  **RELEASE_PR**
+- [ ] All GitHub actions workflows are OK (build, linting, compiled, unit tests ...) **DEV_PR**  **RELEASE_PR**
 ```diff
 @@ Note : C'est fait automatiquement. Peut-être garder la possibilité de ne pas mettre tous les worflows en status check ?@@
 ```
-- [ ] Existing tests (non regression) are passed OK
+- [ ] Existing tests (non regression) are passed OK  **DEV_PR**  **RELEASE_PR**
 ```diff
 @@ Note : C'est déjà dans les workflows@@
 ```
-- [ ] Tests for new features exists and are passed OK
+- [ ] Tests for new features exists and are passed OK  **DEV_PR**  **RELEASE_PR**
 ```diff
 @@ Note : C'est déjà dans les workflows en partie : nouveaux tests unitaires + tests autos@@
 ```
-- [ ] Tests for bug fixes exists and are passed OK
-- [ ] Check opened issues don't need to be corrected in current release
+- [ ] Tests for bug fixes exists and are passed OK **DEV_PR**  **RELEASE_PR**
+- [ ] Check opened issues don't need to be corrected in current release **RELEASE_PR**
+```diff
+@@ Note : Revue de Bugs avant release
+```
 - [ ] If Code coverage < X% = block merge ???
 ```diff
-@@ Note : A automatiser@@
+@@ Note : A automatiser dans... longtemps@@
 ```
 
 
