@@ -115,7 +115,9 @@ jobs:
         # TODO : rendre indépendant du nombre de files (boucle for)
         #
 
-        cd ./result        
+        cd ./result
+        mkdir CodeCoverage
+        cd ./CodeCoverage
         
         #$directoyPath=".\test\CodeCoverage";
         #if(!(Test-Path -path $directoyPath))  
@@ -147,6 +149,8 @@ jobs:
         Invoke-Expression $command_lcov
         ls
         Invoke-Expression $command_genhtml
+        ls        
+        Get-ChildItem -Path . -Filter *.html -Recurse -ErrorAction SilentlyContinue -Force         
 
     - name: zip
       if: ${{ runner.os == 'Windows' }}
