@@ -70,6 +70,7 @@ jobs:
       with:
         name: result
         path: luos.Zip
+        retention-days: 1
    
     #- if: ${{ runner.os == 'windows-latest' }}   
     #  name: Create ouput coverageTag
@@ -110,23 +111,24 @@ jobs:
         Expand-Archive -LiteralPath luos.Zip -DestinationPath .
         ls
 
-    - name: Delete artifacts from previous runs
-      uses: actions/github-script@v3
-      with:
-        github-token: ${{ github.token }}
-        script: |
-          const runsResponse = await github.request("GET /repos/${{ github.repository }}/actions/runs")
-          for (workflow_run of runsResponse.data.workflow_runs) {
-            if (workflow_run.name == "${{ github.workflow }}" && workflow_run.status !== "in_progress") {
-              console.log(`Deleting artifacts from workflow run ${workflow_run.id}`)
-              const response = await github.request(`GET /repos/$/actions/runs/${workflow_run.id}/artifacts`)
-              for (artifact of response.data.artifacts) {
-                console.log(`Deleting artifact with id ${artifact.id}`)
-                const deleteResponse = await github.request(`DELETE /repos/$/actions/artifacts/${artifact.id}`)
-              }
-            }
-          }
-      continue-on-error: true
+    # Does not work
+    #- name: Delete artifacts from previous runs
+    #  uses: actions/github-script@v3
+    #  with:
+    #    github-token: ${{ github.token }}
+    #    script: |
+    #      const runsResponse = await github.request("GET /repos/${{ github.repository }}/actions/runs")
+    #      for (workflow_run of runsResponse.data.workflow_runs) {
+    #        if (workflow_run.name == "${{ github.workflow }}" && workflow_run.status !== "in_progress") {
+    #          console.log(`Deleting artifacts from workflow run ${workflow_run.id}`)
+    #          const response = await github.request(`GET /repos/$/actions/runs/${workflow_run.id}/artifacts`)
+    #          for (artifact of response.data.artifacts) {
+    #            console.log(`Deleting artifact with id ${artifact.id}`)
+    #            const deleteResponse = await github.request(`DELETE /repos/$/actions/artifacts/${artifact.id}`)
+    #          }
+    #        }
+    #      }
+    #  continue-on-error: true
 
     - name: Coverage generation
       run: |
@@ -185,6 +187,7 @@ jobs:
       with:
         name: code_coverage_result
         path: result.Zip
+        retention-days: 1
 
 
     - name: Publish artifact on Readme
