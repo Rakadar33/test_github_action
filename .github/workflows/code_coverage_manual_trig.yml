@@ -151,8 +151,10 @@ jobs:
     - name: zip
       if: ${{ runner.os == 'Windows' }}
       run: |
+        ls
+        cd ./result        
+        ls      
         Compress-Archive -Path .\Luos\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
-        Compress-Archive -Path .\Luos\* -DestinationPath coverage.Zip
 
     - if: ${{ runner.os == 'windows' }}
       uses: actions/upload-artifact@v1
