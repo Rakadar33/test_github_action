@@ -152,15 +152,15 @@ jobs:
       if: ${{ runner.os == 'Windows' }}
       run: |
         ls
-        cd ./result        
+        cd ./result/test        
         ls      
-        Compress-Archive -Path .\Luos\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
+        Compress-Archive -Path .\CodeCoverage\* -DestinationPath .\code_coverage.Zip        
 
     - if: ${{ runner.os == 'windows' }}
       uses: actions/upload-artifact@v1
       with:
-        name: result
-        path: coverage.Zip
+        name: code_coverage_result
+        path: code_coverage.Zip
 
 
     - name: Publish artifact on Readme
