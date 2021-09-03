@@ -60,7 +60,7 @@ jobs:
         # platformio run -t clean;platformio test -e native -v --filter "*mem*" -i CodeCoverage
         platformio run -t clean;platformio test -i CodeCoverage
 
-    - name: Zip woekspace directory
+    - name: Zip workspace directory
       if: ${{ runner.os == 'Windows' }}
       run: |
         Compress-Archive -Path .\Luos\* -DestinationPath luos.Zip
@@ -148,12 +148,28 @@ jobs:
         ls
         Invoke-Expression $command_genhtml
 
-    #- name: zip
-    #  run: Compress-Archive -Path .\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
+    - name: zip
+      if: ${{ runner.os == 'Windows' }}
+      run: |
+        ls
+        cd ./result        
+        ls      
+        Compress-Archive -Path .\Luos\test\CodeCoverage\* -DestinationPath .\test\code_coverage.Zip        
+
+    - if: ${{ runner.os == 'windows' }}
+      uses: actions/upload-artifact@v1
+      with:
+        name: result
+        path: coverage.Zip
+
 
     - name: Publish artifact on Readme
       run: |
         ls
+      # TODO !!!!!!!!!!!!!!!!!!!!!!!
+      # TODO !!!!!!!!!!!!!!!!!!!!!!!
+      # TODO !!!!!!!!!!!!!!!!!!!!!!!
+      
       #uses: zgosalvez/github-actions-report-lcov@49af65b0586c274a625a41a2dc8aaaae7d00568b
       #with:
       #  coverage-files: $WINDOWS_WORKSPACE\test\CodeCoverage\merged.info
