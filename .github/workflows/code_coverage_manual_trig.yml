@@ -146,8 +146,8 @@ jobs:
         $path=split-path (Get-Command chocolatey).Path
 
         ls
-        ls .\.pio\
-        ls .\.pio\build\native\test\memory_allocator_tx\
+        # ls ..\.pio\
+        # ls ..\.pio\build\native\test\memory_allocator_tx\
         Get-ChildItem -Path . -Filter *.gcno -Recurse -ErrorAction SilentlyContinue -Force
         Get-ChildItem -Path . -Filter *.gcda -Recurse -ErrorAction SilentlyContinue -Force         
         
