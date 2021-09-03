@@ -154,6 +154,8 @@ jobs:
         ls
         cd ./result/test        
         ls      
+        cd ..
+        ls              
         Compress-Archive -Path .\CodeCoverage\* -DestinationPath .\code_coverage.Zip        
 
     - if: ${{ runner.os == 'windows' }}
