@@ -173,11 +173,12 @@ jobs:
       if: ${{ runner.os == 'Windows' }}
       run: |
         ls
-        cd ./result/test        
-        ls      
-        cd ..
-        ls              
-        Compress-Archive -Path .\CodeCoverage\* -DestinationPath .\code_coverage.Zip        
+        cd ./result/
+        ls ./CodeCoverage              
+        Compress-Archive -Path .\CodeCoverage\* -DestinationPath code_coverage.Zip        
+        ls
+        ls ./CodeCoverage
+      continue-on-error: true
 
     - if: ${{ runner.os == 'windows' }}
       uses: actions/upload-artifact@v1
