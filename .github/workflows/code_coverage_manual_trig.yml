@@ -135,7 +135,6 @@ jobs:
 
         cd ./result
         mkdir CodeCoverage
-        cd ./CodeCoverage
         
         #$directoyPath=".\test\CodeCoverage";
         #if(!(Test-Path -path $directoyPath))  
