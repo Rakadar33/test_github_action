@@ -126,6 +126,7 @@ jobs:
               }
             }
           }
+      continue-on-error: true
 
     - name: Coverage generation
       run: |
