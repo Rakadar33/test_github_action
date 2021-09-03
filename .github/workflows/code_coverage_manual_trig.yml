@@ -184,7 +184,7 @@ jobs:
       uses: actions/upload-artifact@v1
       with:
         name: code_coverage_result
-        path: code_coverage.Zip
+        path: result.Zip
 
 
     - name: Publish artifact on Readme
