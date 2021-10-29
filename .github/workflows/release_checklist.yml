@@ -12,7 +12,7 @@ on:
     types: [edited, opened, synchronize, reopened]  
     branches:
       - master
-      - demo
+      - develop
       #- rc_candidate
       #
       
