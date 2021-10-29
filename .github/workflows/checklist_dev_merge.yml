@@ -1,0 +1,15 @@
+name: 'Dev Checklist'
+on: 
+  
+  pull_request:
+    types: [edited, opened, synchronize, reopened]  
+    branches:
+      - dev
+      
+jobs:
+  dev-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
