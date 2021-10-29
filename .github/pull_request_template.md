@@ -1,13 +1,13 @@
-# Checklist : Merging to MAIN branch for new Release
+# Checklist : Merging to DEV branch
 
 GitHub actions workflows are OK : 
-- [ ]  Code reviewed
-- [ ]  Build
-- [ ]  Linting
-- [ ]  Compilation
-- [ ]  Unit tests
-- [ ]  Code coverage
-- [ ]  Auto Tests are OK (non regression stress test, robustness connect/disconnect, bootloader)
+-   Code reviewed
+-   Build
+-   Linting
+-   Compilation
+-   Unit tests
+-   Code coverage
+-   Auto Tests are OK (non regression stress test, robustness connect/disconnect, bootloader)
 
 ## Versionning
 - [ ]  Version numbers have been incremented in C code files
