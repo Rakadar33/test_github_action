@@ -17,6 +17,7 @@ on:
       
 jobs:
   dev-checklist:
+    name:  checklist_dev
     runs-on: ubuntu-latest
     steps:
       - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
