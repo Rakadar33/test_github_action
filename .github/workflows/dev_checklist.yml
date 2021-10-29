@@ -1,4 +1,4 @@
-name: 'Release Checklist'
+name: 'Dev Checklist'
 on: 
   #status:
   #workflow_dispatch:  
