@@ -12,6 +12,7 @@ on:
     types: [edited, opened, synchronize, reopened]  
     branches:
       - master
+      - demo
       #- rc_candidate
       #
       
