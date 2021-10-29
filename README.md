@@ -6,7 +6,7 @@ Simple overview of use/purpose. rc_candidate Test 3.
 
 An in-depth paragraph about your project and overview of use.
 
-## Getting Started
+## Getting Started.
 
 ### Dependencies
 
