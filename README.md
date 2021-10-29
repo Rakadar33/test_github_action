@@ -2,7 +2,7 @@
 
 Simple overview of use/purpose. rc_candidate Test 3.
 
-## Description
+## Description.
 
 An in-depth paragraph about your project and overview of use.
 
