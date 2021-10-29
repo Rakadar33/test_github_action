@@ -16,7 +16,7 @@ on:
       #
       
 jobs:
-  task-check:
+  task-check-dev:
     runs-on: ubuntu-latest
     steps:
       - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
