@@ -17,13 +17,14 @@ GitHub actions workflows are OK :
 ## Documentation
 - [ ] Documentation is up to date
 - [ ] Changelog is up-to-date with new functionnalities and bug fixes
-- [ ] If needed, all new manual tests results are documented
+- [ ] Manual tests results are documented (A VOIR ENSEMBLE COMMENT ???)
 
 ## Quality Assurance
 - [ ] Commits policy is respected (constitancy commits, clear commits comments)
 - [ ] Code is commented (particularly in hard to understand areas)
+- [ ] Each function has a header (description, inputs, outputs) 
 - [ ] There are no new warnings that can be corrected
-- [ ] Check opened issues don't need to be corrected in current release
+- [ ] Check opened issues don't need to be corrected in current release (ENLEVER DE LA CHECKLIST : réunions régulières)
 
 ## Tests
 - [ ]  Manual and Auto Tests for new features are reviewed
