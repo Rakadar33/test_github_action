@@ -3,8 +3,8 @@ on:
   
   pull_request:
     types: [edited, opened, reopened]  
-    branches-ignore:
-      - master	
+    branches:
+      - 'rc_*'
       
 jobs:
   pr_checklist:
