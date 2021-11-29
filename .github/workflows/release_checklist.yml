@@ -1,25 +1,15 @@
-name: 'Release Checklist'
+name: Checklist before merge
 on: 
-  #status:
-  #workflow_dispatch:  
   
   pull_request:
-  #  # TODO : to be launched by CD job ??
-  #  # TODO : to be launched by CD job ??
-  #  # TODO : to be launched by CD job ??
-  #  #types: [assigned]        #types: [closed]          types: [opened]
-  #  types: [opened, reopened]
-    types: [edited, opened, synchronize, reopened]  
-    branches:
-      - master
-      - develop
-      #- rc_candidate
-      #
+    types: [edited, opened, reopened]  
+    branches-ignore:
+      - master	
       
 jobs:
-  task-check:
+  pr_checklist:
     runs-on: ubuntu-latest
     steps:
       - uses: venkatsarvesh/pr-tasks-completed-action@v1.0.0
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repo-token: "${{ secrets.GITHUB_TOKEN 
