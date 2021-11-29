@@ -1,6 +1,5 @@
 # test_github_action
-dss
-Simple overview of use/purpose. rc_candidate Test 3
+_candidate Test 3
 
 ## Description
 
