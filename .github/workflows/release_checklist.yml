@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [edited, opened, reopened]  
     branches:
-      - 'rc_*'
+      - rc_*
       
 jobs:
   pr_checklist:
