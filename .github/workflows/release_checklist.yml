@@ -1,4 +1,5 @@
-name: Checklist before merge
+name: Checklist merge authorization
+
 on: 
   
   pull_request:
