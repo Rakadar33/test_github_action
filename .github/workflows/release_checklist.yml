@@ -5,7 +5,7 @@ on:
     types: [edited, opened, reopened]  
     branches:
       - master
-      - origin/develop
+      - develop
       - rc_*
       
 jobs:
