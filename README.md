@@ -1,5 +1,5 @@
 # test_github_action
-t1
+tz1
 Simple overview of use/purpose. rc_candidate Test 3
 
 ## Description
